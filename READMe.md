@@ -19,7 +19,7 @@ Load the Jupyter into a suitable platform (Colab/Anaconda etc) and ensure the pl
 # Model Selection:
 We found that Logistic Regression performed better for the PR AUC than KNN, SVC and Decision Tree models. Tuning the hyper-parameters for all four models still resulted in Logistic Regression performing the best with C=3, Penalty=L2 and Solver=LBFGS gave the best performing model (by PR AUC). The best PR AUC of 0.429126 was notably higher than other models.
 
-Logistic Regression was not the fasted to fit the trained model. But is was significantly faster than SVC (by two orders of magnitude).
+Logistic Regression was not the fasted to fit the trained model. But it was significantly faster than SVC (by two orders of magnitude).
 
 # Business Information:
 1. **Customer Characteristics:**
@@ -27,7 +27,7 @@ We sorted customers by their likeliness to accept (highest first) so a Lift Anal
 
 We ranked the features of the data according to their contribution to the best model. This revealed:
 
-2. ** Macro-Economics**
+2. **Macro-Economics**
 Also several economic conditions at the time of a campaign is likely to increase yield so capitalising by increasing campaigns if the conditions are right is also useful.
 
 3. **Timing:**
