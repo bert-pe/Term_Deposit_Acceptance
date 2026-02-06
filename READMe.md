@@ -1,37 +1,46 @@
 # Bank Deposit Acceptance Analysis
-The core of this project was determining how to increase the acceptance of term deposits, when offered in campaigns targeted at existing customers of a Portuguese bank.
+
+The core objective of this project is to determine how to increase the acceptance of term deposits when offered through marketing campaigns targeted at existing customers of a Portuguese bank.
 
 ## Overview
-We follow the CRISP-DM method to examine the features of customer information that was amalgamated from 17 marketing campaigns between 2008 and 2010. We comparing different machine learning classification methods: namely K Nearest Neighbor, Logistic Regression, Decision Trees, and Support Vector Machines.
+This project follows the CRISP-DM methodology to examine customer information aggregated from 17 marketing campaigns conducted between 2008 and 2010. We compare several machine learning classification models, namely K-Nearest Neighbour (KNN), Logistic Regression, Decision Trees, and Support Vector Machines (SVM).
 
 ## Contents
-In this repository is the Jupyter Workbook that was used to do feature engineering on the data set (called Accept_Deposit.ipynb)
-
-There is the data directory/folder containing:
-   bank-additional-full.csv  (the .csv file for the data)
-   bank-additional-names.txt  (has the data attribution)
+This repository contains:
+- A Jupyter Notebook (`Accept_Deposit.ipynb`) used for feature engineering, model training, and evaluation
+- A `data` directory containing:
+  - `bank-additional-full.csv` (the dataset)
+  - `bank-additional-names.txt` (data description and attribution)
+- The CRISP-DM reference document (`CRISP-DM-BANK.pdf`)
 
 ## How to Run
-Load the Jupyter into a suitable platform (Colab/Anaconda etc) and ensure the platform has access to the data.
+Open the Jupyter notebook in a suitable environment (e.g. JupyterLab, Anaconda, or Google Colab) and ensure the runtime has access to the `data` directory.
 
 ## Results
 
-### Model Selection:
-We found that Logistic Regression performed better for the PR AUC than KNN, SVC and Decision Tree models. Tuning the hyper-parameters for all four models still resulted in Logistic Regression performing the best with C=3, Penalty=L2 and Solver=LBFGS gave the best performing model (by PR AUC). The best PR AUC of 0.429126 was notably higher than other models.
+### Model Selection
+Logistic Regression achieved the strongest performance in terms of Precision–Recall AUC (PR AUC) compared with KNN, SVC, and Decision Tree models. After hyperparameter tuning, Logistic Regression remained the best-performing model, with the optimal configuration:
 
-Logistic Regression was not the fasted to fit the trained model. But it was significantly faster than SVC (by two orders of magnitude).
+- C = 3  
+- Penalty = L2  
+- Solver = LBFGS  
 
-### Business Information:
-1. **Customer Characteristics:**
-We sorted customers by their likeliness to accept (highest first) so a Lift Analysis could be done. This revealed that most of the value is captured early. After ~20% of the ranked population, each additional customer contacted yields far fewer acceptances.
+The best PR AUC achieved was **0.429**, which was notably higher than that of the other models.
 
-We ranked the features of the data according to their contribution to the best model. This revealed:
+Although Logistic Regression was not the fastest model to train, it was **significantly faster than SVC by approximately two orders of magnitude**, making it a strong choice in both performance and efficiency.
 
-2. **Macro-Economics**
-Also several economic conditions at the time of a campaign is likely to increase yield so capitalising by increasing campaigns if the conditions are right is also useful.
+### Business Insights
 
-3. **Timing:**
-The customer characteristics can be built upon by timing campaigns for Mondays and in October.
+#### 1. Customer Characteristics
+Customers were ranked by their predicted likelihood of acceptance, enabling a lift analysis. This showed that most of the value is captured early: beyond approximately the top 20% of ranked customers, each additional customer contacted yields substantially fewer acceptances.
 
-4. **Contact Method**
-For customers with landline telephone, this would be the first choice for contact method.
+Feature importance analysis of the best-performing model showed that customer characteristics contribute meaningfully to prediction accuracy.
+
+#### 2. Macro-Economic Conditions
+Several macro-economic indicators were found to be highly influential. This suggests that campaign effectiveness is sensitive to broader economic conditions, and that increasing campaign intensity during favourable conditions may improve acceptance rates.
+
+#### 3. Timing
+Campaign timing also matters. The analysis indicates that running campaigns on Mondays and during October is associated with higher acceptance rates.
+
+#### 4. Contact Method
+Customers with a landline telephone were more likely to accept when contacted via telephone, making this the preferred contact method for that customer segment.
